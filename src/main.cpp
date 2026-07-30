@@ -8,6 +8,7 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 */
 
 #include "raylib.h"
+#include "Circle.h"	
 
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 
@@ -24,10 +25,15 @@ int main ()
 
 	// Load a texture from the resources directory
 	Texture wabbit = LoadTexture("wabbit_alpha.png");
-	
+
+	Circle circle;
+
 	// game loop
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
 	{
+
+		circle.MoveCircle(GetScreenWidth(), GetScreenHeight());
+
 		// drawing
 		BeginDrawing();
 
@@ -39,9 +45,12 @@ int main ()
 
 		// draw our texture to the screen
 		DrawTexture(wabbit, 400, 200, WHITE);
-		
+		circle.DrawCircle();
 		// end the frame and get ready for the next one  (display frame, poll input, etc...)
 		EndDrawing();
+
+
+
 	}
 
 	// cleanup

@@ -301,9 +301,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Circle.h" />
     <ClInclude Include="include\resource_dir.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Circle.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
