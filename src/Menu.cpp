@@ -1,5 +1,5 @@
 #include "Menu.hpp"
-#include "raylib.h"
+
 
 namespace kai {
 	//Menu::Menu()
@@ -17,6 +17,10 @@ namespace kai {
 	void Menu::Update()
 	{
 		circles.MoveCircle(GetScreenWidth(), GetScreenHeight());
+		if (IsKeyPressed(KEY_M))
+		{
+			menuGUI.toggle();
+		}
 	}
 
 	void Menu::Draw()
@@ -29,6 +33,11 @@ namespace kai {
 		//DrawTexture(wabbit, 400, 200, WHITE);
 
 		//UnloadTexture(wabbit);
+
+
+		menuGUI.draw();
+
+		//GuiMessageBox((Rectangle{ 100, 200, 300, 150 }, "Message", "This is a message box!", "Ok;Cancel", &btnActive));
 
 		circles.DrawCircle();
 

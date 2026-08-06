@@ -1,10 +1,18 @@
-#pragma once
+#ifndef MENU_HPP
+#define MENU_HPP
 #include "Scene.hpp"
 #include "Circle.hpp"
+#include "kai_gui.hpp"
+#include "Canvas.hpp"
 
-namespace kai {
-	class Menu : public Scene {
+namespace kai 
+{
+	class Menu : public Scene 
+	{
+		MenuGUI menuGUI;
+		
 	private:
+
 
 	public:
 
@@ -20,3 +28,4 @@ namespace kai {
 
 	};
 }
+#endif // !MENU_HPP

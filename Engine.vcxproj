@@ -301,10 +301,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Canvas.hpp" />
     <ClInclude Include="include\Circle.hpp" />
     <ClInclude Include="include\Engine.hpp" />
+    <ClInclude Include="include\kai_gui.hpp" />
     <ClInclude Include="include\Menu.hpp" />
     <ClInclude Include="include\Play.hpp" />
+    <ClInclude Include="include\raygui.h" />
     <ClInclude Include="include\resource_dir.h" />
     <ClInclude Include="include\Scene.hpp" />
     <ClInclude Include="include\scene_manager.hpp" />
@@ -312,6 +315,7 @@
   <ItemGroup>
     <ClCompile Include="src\Circle.cpp" />
     <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\kai_gui.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Play.cpp" />
