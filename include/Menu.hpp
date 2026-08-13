@@ -3,27 +3,28 @@
 #include "Scene.hpp"
 #include "Circle.hpp"
 #include "kai_gui.hpp"
-#include "Canvas.hpp"
+#include "EventBus.hpp"
 
 namespace kai 
 {
-	class Menu : public Scene 
+	class Menu : public Scene, public EventListener 
 	{
 		MenuGUI menuGUI;
-		
-	private:
-
+		int playEventId;
 
 	public:
 
 		Circle circles;
-		Menu() = default;
-		~Menu() = default;
+		Menu();
+		~Menu();
 
+		void OnInit() override;
 		void OnEnter() override;
 		void Update() override;
 		void Draw() override;
 		void OnExit() override;
+		void onEvent(EventData data) override;
+
 
 
 	};

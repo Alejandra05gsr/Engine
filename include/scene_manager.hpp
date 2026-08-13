@@ -1,25 +1,34 @@
 #pragma once
+#include <string>
+#include <unordered_map>
 #include "Scene.hpp"
 namespace kai {
-	class SceneManager {
-	private:
+	class SceneManager 
+	{
+		std::unordered_map<std::string, Scene*> scenes;
 		Scene* currentScene = nullptr;
+		Scene* next = nullptr;
 
 	public:
-		SceneManager() = default;
-		~SceneManager() = default;
-
-		void ChangeScene(Scene* newScene)
+		static SceneManager& get()
 		{
-			if (currentScene)
-			{
-				currentScene->OnExit();
-			}
-			currentScene = newScene;
-			if (currentScene)
-			{
-				currentScene->OnEnter();
-			}
+			static SceneManager instance;
+			return instance;
+		}
+		SceneManager(const SceneManager&) = delete; //Constructor copia
+		void operator=(const SceneManager&) = delete;
+
+		void addScene(const std::string& name, Scene* scene)
+		{
+			scenes[name] = scene;
+		}
+
+		void changeScene(const std::string& name)
+		{
+			auto it = scenes.find(name);
+			if (it == scenes.end())
+				return;
+			next = it->second;
 		}
 
 		void Update()
@@ -28,6 +37,7 @@ namespace kai {
 			{
 				currentScene->Update();
 			}
+			processChange();
 		}
 
 		void Draw()
@@ -37,6 +47,19 @@ namespace kai {
 				currentScene->Draw();
 			}
 		}
+
+	private:
+		void processChange()
+		{
+			if (!next)
+				return;
+			if (currentScene)
+				currentScene->OnExit();
+			currentScene = next;
+			next = nullptr;
+			currentScene->OnInit();
+		}
+		SceneManager() = default;
 		
 	};
 }

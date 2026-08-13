@@ -304,9 +304,11 @@
     <ClInclude Include="include\Canvas.hpp" />
     <ClInclude Include="include\Circle.hpp" />
     <ClInclude Include="include\Engine.hpp" />
+    <ClInclude Include="include\EventBus.hpp" />
     <ClInclude Include="include\kai_gui.hpp" />
     <ClInclude Include="include\Menu.hpp" />
     <ClInclude Include="include\Play.hpp" />
+    <ClInclude Include="include\player.hpp" />
     <ClInclude Include="include\raygui.h" />
     <ClInclude Include="include\resource_dir.h" />
     <ClInclude Include="include\Scene.hpp" />

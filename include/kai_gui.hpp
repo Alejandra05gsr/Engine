@@ -11,6 +11,7 @@ namespace kai
 		MenuGUI();
 		~MenuGUI() = default;
 		void drawGUI() override;
+		int playBttnId;
 
 	};
 

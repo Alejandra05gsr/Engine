@@ -8,6 +8,7 @@ namespace kai {
 		Scene() = default;
 		~Scene() = default;
 
+		virtual void OnInit() = 0;
 		virtual void OnEnter() = 0;
 		virtual void Update() = 0;
 		virtual void Draw() = 0;

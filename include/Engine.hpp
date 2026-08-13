@@ -1,28 +1,32 @@
-#pragma once
+#ifndef ENGINE_HPP
+#define ENGINE_HPP
 #include "Circle.hpp"
-#include "Menu.hpp"
 #include "Play.hpp"
+#include "Menu.hpp"
 #include "scene_manager.hpp"
 
 namespace kai{
 	class Engine {
-	private:
-
-
 	public:
-		Engine();
-		~Engine();
+		Engine() = default;
+		~Engine() = default;
 
-		SceneManager sceneManager;
-		Menu menu;
-		Play play;
+		//Play play;
+		//Menu menu;
 
-		void Update(); //Hace el update
-		void Draw();  //Dibuja
 		void Init(); //Inicializa
 		void Run(); //Update y draw
+		void Update(); //Hace el update
+		void Draw();  //Dibuja
 		void Shutdown();
+
+		SceneManager& sceneMgr = SceneManager::get();
+
+		int screenWidth = 800;
+		int screenHeight = 600;
+
 
 	};
 
 }
+#endif // !ENGINE_HPP
