@@ -3,6 +3,9 @@
 #include "Scene.hpp"
 #include "EventBus.hpp"
 #include "player.hpp"
+#include "Ship.h"
+#include "EntityManager.h"
+#include "Bullet.h"
 
 namespace kai {
 	class Play : public Scene, EventListener {
@@ -20,7 +23,12 @@ namespace kai {
 		void onEvent(EventData data) override; 
 
 		Player player;
+		Ship* ship;
+		Ship* ship2;
+		Bullet* bullet;
 
+
+		EntityManager entityMgr;
 
 		int eventId_01;
 		int eventId_02;
