@@ -23,12 +23,25 @@ namespace kai {
 
 
 	}
+
+
 	void Play::OnEnter()
 	{
+
 	}
+
+
 	void Play::Update()
 	{
 		entityMgr.update();
+
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+		{
+			TraceLog(LOG_INFO, "Mouse Left Button Pressed");
+			EventData data;
+			data.type = "onclick";
+			EventBus::get().fire("onclick", data); 
+		}
 
 
 		if (IsKeyPressed(KEY_C))
@@ -43,8 +56,9 @@ namespace kai {
 		{
 			player.PlayerHit();
 		}
-
 	}
+
+
 	void Play::Draw()
 	{
 		entityMgr.draw();

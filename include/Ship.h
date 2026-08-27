@@ -22,6 +22,7 @@ public:
 
 	void update() override
 	{
+
 		if (IsKeyDown(KEY_RIGHT))
 		{
 			position.x += speed;

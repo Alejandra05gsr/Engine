@@ -10,7 +10,7 @@ public:
 
 	void update() override
 	{
-		if (!isActive) return;
+		//if (!isActive) return;
 
 		position.y -= speed;
 

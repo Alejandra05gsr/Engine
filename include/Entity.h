@@ -17,9 +17,8 @@ public:
 	virtual void update() {};
 	virtual void draw() {};
 	void setPosition(float x, float y) { position.x = x; position.y = y; }
-	void setPosition(Vector2 pos) { position = pos; }                  
+	void setPosition(Vector2 pos) { position = pos; }
 	bool isActive() const { return active; }
-
 
 };
 

@@ -24,6 +24,7 @@ public:
 			if (entity && entity->active)
 			{
 				entity->update();
+
 			}
 		}
 	}
