@@ -1,9 +1,14 @@
 #include "Play.hpp"
 #include "raylib.h"
+#include "Entity.h"
+#include "resources_manager.h"
+
 
 namespace kai {
 	void Play::OnInit()
 	{
+		LoadTexture("textures/Space.png");
+
 		listen("grab_coin");
 		listen("enemy_hit");
 		listen("player_hit");
@@ -12,14 +17,26 @@ namespace kai {
 		ship2 = new Ship();
 		bullet = new Bullet();
 
-		ship->setPosition(10, 20);
-		ship2->setPosition(20, 40);
-		bullet->setPosition(400, 550);
+		ship->setPosition(300, 550);
+		ship2->setPosition(320, 550);
+		bullet->setPosition(300, 500);
 
 
 		entityMgr.add(bullet);
 		entityMgr.add(ship);
 		entityMgr.add(ship2);
+
+		//font = kai::ResourcesManager::get().getFont("SpaceFont3.ttf");
+
+		font = assets.getFont("SpaceFont3.ttf");
+
+		sound = kai::ResourcesManager::get().getSound("Pew.wav");
+		bg_music = kai::ResourcesManager::get().getMusic("SpaceMusic.mp3");
+		PlayMusicStream(bg_music);
+
+
+		//Prueba
+		textureBG = kai::ResourcesManager::get().getTexture("SpaceBG.png");
 
 
 	}
@@ -33,6 +50,9 @@ namespace kai {
 
 	void Play::Update()
 	{
+
+		UpdateMusicStream(bg_music);
+
 		entityMgr.update();
 
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
@@ -41,6 +61,7 @@ namespace kai {
 			EventData data;
 			data.type = "onclick";
 			EventBus::get().fire("onclick", data); 
+			PlaySound(sound);
 		}
 
 
@@ -56,14 +77,21 @@ namespace kai {
 		{
 			player.PlayerHit();
 		}
+
+		//Prueba
+		DrawTextureEx(textureBG,{0.0f,0.0f}, 0.0f, 1.0, WHITE);
+
+
 	}
 
 
 	void Play::Draw()
 	{
-		entityMgr.draw();
 
-		DrawText("Play", 200, 200, 20, WHITE);
+		entityMgr.draw();
+		//DrawText("Space Game", 100, 100, 40, WHITE);
+		DrawTextEx(font, "Space Game", {100, 100}, 40, 0, WHITE);
+
 	}
 
 

@@ -10,6 +10,8 @@ namespace kai
 	{
 		SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 		InitWindow(800, 600, "Hello Raylib");
+		InitAudioDevice();
+
 
 		//menu.OnEnter();
 		SearchAndSetResourceDir("resources");

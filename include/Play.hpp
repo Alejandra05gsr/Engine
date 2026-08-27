@@ -6,6 +6,7 @@
 #include "Ship.h"
 #include "EntityManager.h"
 #include "Bullet.h"
+#include "resources_manager.h"
 
 namespace kai {
 	class Play : public Scene, EventListener {
@@ -34,6 +35,16 @@ namespace kai {
 		int eventId_02;
 		int playerScore;
 		int grabCoinEvId;
+		
+		
+		Font font;
+		Sound sound;
+		Music bg_music;
+		kai::ResourcesManager& assets = kai::ResourcesManager::get();
+
+
+		//Prueba
+		Texture2D textureBG;
 
 	};
 }

@@ -1,22 +1,26 @@
 #pragma once
 #include "Entity.h"
+#include "Bullet.h"
+#include "resources_manager.h"
 
 class Ship : public Entity
 {
 public:
-	float speed = 20.0f;
+	float speed = 10.0f;
+	//Bullet bullet[100];
 
 	Ship()
 	{
 		name = "Ship";
 		active = true;
 		position = { 400.0f, 300.0f };
-		texture = LoadTexture("Ship.png");
+		//texture = LoadTexture("textures/Ship.png");
+		texture = kai::ResourcesManager::get().getTexture("Ship.png");
 	}
 
 	~Ship()
 	{
-		UnloadTexture(texture);
+
 	}
 
 
