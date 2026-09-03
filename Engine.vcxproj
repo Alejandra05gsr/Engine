@@ -305,6 +305,8 @@
     <ClInclude Include="include\Bullet.h" />
     <ClInclude Include="include\Canvas.hpp" />
     <ClInclude Include="include\Circle.hpp" />
+    <ClInclude Include="include\circle_collider.h" />
+    <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\Engine.hpp" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\EntityManager.h" />
@@ -318,6 +320,7 @@
     <ClInclude Include="include\resource_dir.h" />
     <ClInclude Include="include\Scene.hpp" />
     <ClInclude Include="include\scene_manager.hpp" />
+    <ClInclude Include="include\Score.h" />
     <ClInclude Include="include\Ship.h" />
   </ItemGroup>
   <ItemGroup>

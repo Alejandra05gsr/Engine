@@ -2,6 +2,11 @@
 #include "Entity.h"
 #include <vector>
 
+
+
+
+namespace kai{
+}
 class EntityManager
 {
 public:
@@ -24,6 +29,7 @@ public:
 			if (entity && entity->active)
 			{
 				entity->update();
+				entity->collider.update(entity->position);
 
 			}
 		}
@@ -36,6 +42,10 @@ public:
 			if (entity && entity->active)
 			{
 				entity->draw();
+				if (entity->debugCollider)
+				{
+					entity->collider.debugDraw();
+				}
 			}
 		}
 	}

@@ -1,24 +1,32 @@
 #pragma once
 #include "raylib.h"
 #include <string>
+#include "circle_collider.h"
 
 
-class Entity
+namespace kai
 {
-public:
-	std::string name = "";
-	Vector2 position = { 0.0f, 0.0f };
-	bool active = true;
-	Texture2D texture;
+	class Entity
+	{
+	public:
+		std::string name = "";
+		Vector2 position = { 0.0f, 0.0f };
+		bool active = true;
+		bool debugCollider = true;
+		Texture2D texture;
+		CircleCollider collider;
 
-	Entity() = default;
-	virtual ~Entity() = default;
+		Entity() = default;
+		virtual ~Entity() = default;
 
-	virtual void update() {};
-	virtual void draw() {};
-	void setPosition(float x, float y) { position.x = x; position.y = y; }
-	void setPosition(Vector2 pos) { position = pos; }
-	bool isActive() const { return active; }
+		virtual void update() {};
+		virtual void draw() {};
+		void setPosition(float x, float y) { position.x = x; position.y = y; }
+		void setPosition(Vector2 pos) { position = pos; }
+		bool isActive() const { return active; }
+		bool colldiesWith(Entity& other) { return collider.Collides(other.collider); }
 
-};
+	};
+
+}
 

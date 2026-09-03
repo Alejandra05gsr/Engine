@@ -16,6 +16,7 @@ public:
 		position = { 400.0f, 300.0f };
 		//texture = LoadTexture("textures/Ship.png");
 		texture = kai::ResourcesManager::get().getTexture("Ship.png");
+		collider.radius = texture.width / 2.0f;
 	}
 
 	~Ship()
@@ -50,7 +51,8 @@ public:
 	{
 		if (isActive() || texture.id != 0)
 		{
-			DrawTextureEx(texture, position,0.0f, 1.0, WHITE );
+			Vector2 pos = { position.x - texture.width / 2, position.y - texture.height / 2 };
+			DrawTextureEx(texture, pos,0.0f, 1.0, WHITE );
 		}
 
 	}
