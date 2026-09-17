@@ -18,6 +18,8 @@ namespace kai {
 		ship = new Ship();
 		enemies = new Enemy[MAX_ENEMIES];
 		bullets = new Bullet[MAX_BULLETS];
+		powerups = new PowerUp[MAX_POWERUPS];
+		lives = new Lives[MAX_LIVES];
 		score = new Score();
 
 		ship->setPosition(300, 550);
@@ -35,6 +37,12 @@ namespace kai {
 		for (int i = 0; i < MAX_ENEMIES; i++)
 		{
 			entityMgr.add(&enemies[i]);
+		}
+
+		lives = new Lives[MAX_LIVES];
+		for (int i = 0; i < MAX_LIVES; i++)
+		{
+			entityMgr.add(&lives[i]);
 		}
 
 		//entityMgr.add(ship2);
@@ -150,12 +158,23 @@ namespace kai {
 			{
 				for (int j = 0; j < MAX_ENEMIES; j++)
 				{
-					if (enemies[i].active)
+					if (enemies[j].active)
 					{
 						if (bullets[i].colldiesWith(enemies[i]))
 						{
 							bullets[i].active = false;
-							enemies[i].active = false;
+							enemies[j].active = false;
+							if (GetRandomValue(1, 100) <= 30)
+							{
+								spawnPowerUp(enemies[j].position);
+							}
+
+							if (GetRandomValue(1, 100) <= 30)
+							{
+								spawnLives(enemies[j].position);
+								(enemies[j].position);
+							}
+
 							score->addPoints();
 							//Se podria poner el score o sonido
 
@@ -181,6 +200,18 @@ namespace kai {
 		//TraceLog(LOG_WARNING, "Enemies no funciona");
 	}
 
+	void Play::spawnPowerUp(Vector2 position)
+	{
+		for (int i = 0; i < MAX_LIVES; i++)
+		{
+			if (!lives[i].active)
+			{
+				lives[i].position = position;
+				lives[i].active = true;
+				break; // Activa solo uno y sale del bucle
+			}
+		}
+	}
 
 	void Play::OnExit()
 	{

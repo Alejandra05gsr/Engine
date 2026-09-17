@@ -9,9 +9,13 @@
 #include "resources_manager.h"
 #include "Enemy.h"
 #include "Score.h"
+#include "lives.h"
+#include "PowerUps.h"
 
 #define MAX_BULLETS 30
 #define MAX_ENEMIES 20
+#define MAX_POWERUPS 5
+#define MAX_LIVES 3
 
 
 namespace kai {
@@ -31,6 +35,8 @@ namespace kai {
 		void shoot();
 		void spawnEnemies();
 		void checkCollitions();
+		void spawnPowerUp(Vector2 position);
+		void spawnLives(Vector2 position);
 
 
 		EntityManager entityMgr;
@@ -38,6 +44,9 @@ namespace kai {
 		Bullet* bullets;
 		Enemy* enemies;
 		Score* score;
+		Lives* lives;
+		PowerUp* powerups;
+	
 
 		float spawnTimer = 0.0f;
 		const float SPAWN_INTERVAL = 2.0f;
