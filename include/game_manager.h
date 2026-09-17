@@ -7,7 +7,7 @@
 class GameManager : public EventListener
 {
 public:
-	int max_kills = 10;
+	int max_kills = 2;
 	int curret_kills = 0;
 	int player_lives = 3;
 
@@ -35,7 +35,7 @@ public:
 		player_lives--;
 		TraceLog(LOG_INFO, "Player hit. Remaining lives: %i", player_lives);
 		if (player_lives <= 0) {
-			kai::SceneManager::get().changeScene("loose");
+			kai::SceneManager::get().changeScene("loose"); //gameover
 		}
 	}
 

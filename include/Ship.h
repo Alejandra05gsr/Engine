@@ -15,7 +15,7 @@ public:
 		active = true;
 		position = { 400.0f, 300.0f };
 		//texture = LoadTexture("textures/Ship.png");
-		texture = kai::ResourcesManager::get().getTexture("Ship.png");
+		texture = kai::ResourcesManager::get().getTexture("Turtle.png");
 		collider.radius = texture.width / 2.0f;
 	}
 

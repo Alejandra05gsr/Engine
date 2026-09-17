@@ -15,7 +15,7 @@ public:
 	Enemy()
 	{
 		active = false;
-		texture = ResourcesManager::get().getTexture("Enemy.png");
+		texture = ResourcesManager::get().getTexture("Bottle2.png");
 		collider.radius = texture.width / 2;
 	}
 

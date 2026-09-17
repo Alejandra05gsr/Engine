@@ -6,7 +6,7 @@ using namespace kai;
 class Lives : public Entity
 {
 public:
-	float speed = 5.0f;
+	float speed = 2.0f;
 	float radius = 10.0f;
 
 	Lives()

@@ -1,11 +1,13 @@
+#include "resources_manager.h"
 #include "Circle.hpp"
 
 Circle::Circle()
 {
-    position = { 400.0f, 300.0f };
     vel = { 200.0f, 150.0f };
     rad = 30.0f;
     color = PINK;
+
+    textureBubble = kai::ResourcesManager::get().getTexture("Bubble.png");
 }
 
 Circle::~Circle()
@@ -25,6 +27,7 @@ void Circle::MoveCircle(int screenWidth, int screenHeight)
 	position.x += vel.x * deltaTime;
 	position.y += vel.y * deltaTime;
 
+    DrawTextureEx(textureBubble, { 0.0f,0.0f }, 0.0f, 1.0, WHITE);
 
     if (position.x - rad <= 0)
     {

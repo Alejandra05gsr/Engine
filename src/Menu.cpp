@@ -15,13 +15,16 @@ namespace kai {
 	void Menu::OnEnter()
 	{
 	}
-	void Menu::OnInit() {
+	void Menu::OnInit() 
+	{
 		// Code to execute when initializing the menu scene
+		textureBG = kai::ResourcesManager::get().getTexture("FondoMarino.png");
 		menuGUI.show(); // Show the menu GUI when the menu scene is initialized
 	}
 
 	void Menu::Update()
 	{
+		DrawTextureEx(textureBG, { 0.0f,0.0f }, 0.0f, 1.0, WHITE);
 		circles.MoveCircle(GetScreenWidth(), GetScreenHeight());
 		if (IsKeyPressed(KEY_M))
 		{
@@ -33,7 +36,7 @@ namespace kai {
 	{
 
 		// draw some text using the default font
-		DrawText("Menu", 200, 200, 20, WHITE);
+		DrawText("Clean the Ocean", 100, 50, 50, WHITE);
 		//menu_gui.draw();
 
 		// draw our texture to the screen

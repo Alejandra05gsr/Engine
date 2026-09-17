@@ -78,16 +78,19 @@
     <ClInclude Include="include\game_manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\game_over_scene.h">
+    <ClInclude Include="include\GameOverScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\win_scene.h">
+    <ClInclude Include="include\WinScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\PowerUps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\lives.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

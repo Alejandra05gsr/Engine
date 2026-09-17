@@ -9,14 +9,17 @@ namespace kai
 	void Engine::Init()
 	{
 		SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-		InitWindow(800, 600, "Hello Raylib");
+		InitWindow(screenWidth, screenHeight, "Hello Raylib");
 		InitAudioDevice();
 
 
 		//menu.OnEnter();
 		SearchAndSetResourceDir("resources");
+		
 		sceneMgr.addScene("menu", new Menu()); // Register the menu scene
 		sceneMgr.addScene("play", new Play()); // Register the play scene
+		//sceneMgr.addScene("win", new WinScene());
+		//sceneMgr.addScene ( "gameover", new GameOverScene());
 		sceneMgr.changeScene("menu"); // Set the initial scene to the menu
 
 		//sceneManager.ChangeScene(&menu); //Copia la direccion de memoria, no el objeto
@@ -69,6 +72,9 @@ namespace kai
 	void Engine::Shutdown() //Finalizar la aplicación
 	{
 		//menu.OnExit();
+		//sceneMgr.shutdown();
+		//assets.shutdown();
+
 		CloseWindow();
 	}
 }

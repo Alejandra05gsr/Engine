@@ -3,13 +3,17 @@
 #include "Entity.h"
 #include <iostream>
 #include "resources_manager.h"
+#include <fstream>
+
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 
 
 namespace kai {
 	void Play::OnInit()
 	{
-		LoadTexture("textures/Space.png");
 
 		//listen("grab_coin");
 		//listen("enemy_hit");
@@ -57,7 +61,14 @@ namespace kai {
 
 
 		//Prueba
-		textureBG = kai::ResourcesManager::get().getTexture("SpaceBG.png");
+		textureBG = kai::ResourcesManager::get().getTexture("Oceano.png");
+
+		//gameManager.Init();
+		std::ifstream file("resources/json/test.json");
+		if (file.is_open())
+		{
+			TraceLog(LOG_INFO, "Se cargo el archivo json");
+		}
 
 
 	}
@@ -107,10 +118,11 @@ namespace kai {
 			shoot();
 		}
 
-		/*if (IsKeyPressed(KEY_E))
+		if (IsKeyPressed(KEY_E))
 		{
-			spawnEnemies();
-		}*/
+			spawnPowerUp({300.0f,300.0f });
+			//spawnLives({400.0f,300.0f });
+		}
 
 		spawnTimer += GetFrameTime();
 		if (spawnTimer >= SPAWN_INTERVAL)
@@ -131,7 +143,7 @@ namespace kai {
 
 		entityMgr.draw();
 		//DrawText("Space Game", 100, 100, 40, WHITE);
-		DrawTextEx(font, "Space Game", {100, 100}, 40, 0, WHITE);
+		DrawTextEx(font, "Clean the Ocean", {100, 100}, 40, 0, WHITE);
 		score->draw();
 
 	}
@@ -164,18 +176,19 @@ namespace kai {
 						{
 							bullets[i].active = false;
 							enemies[j].active = false;
-							if (GetRandomValue(1, 100) <= 30)
-							{
-								spawnPowerUp(enemies[j].position);
-							}
+							//if (GetRandomValue(1, 100) <= 30)
+							//{
+							//	spawnPowerUp(enemies[j].position);
+							//}
 
-							if (GetRandomValue(1, 100) <= 30)
-							{
-								spawnLives(enemies[j].position);
-								(enemies[j].position);
-							}
+							//if (GetRandomValue(1, 100) <= 30)
+							//{
+							//	spawnLives(enemies[j].position);
+							//	(enemies[j].position);
+							//}
 
 							score->addPoints();
+							EventBus::get().fire("enemy_kill");
 							//Se podria poner el score o sonido
 
 						}
@@ -192,6 +205,11 @@ namespace kai {
 		{
 			if (!enemies[i].active)
 			{
+				if (enemies[i].colldiesWith(*ship))
+				{
+					//ship->setPosition(shipOrigin);
+
+				}
 				enemies[i].position = Vector2{(float)GetRandomValue(0,GetScreenWidth()), 20.0f};
 				enemies[i].active = true;
 				break;
@@ -201,6 +219,19 @@ namespace kai {
 	}
 
 	void Play::spawnPowerUp(Vector2 position)
+	{
+		for (int i = 0; i < MAX_POWERUPS; i++)
+		{
+			if (!powerups[i].active)
+			{
+				powerups[i].position = position;
+				powerups[i].active = true;
+				break; // Activa solo uno y sale del bucle
+			}
+		}
+	}
+
+	void Play::spawnLives(Vector2 position)
 	{
 		for (int i = 0; i < MAX_LIVES; i++)
 		{
@@ -216,6 +247,12 @@ namespace kai {
 	void Play::OnExit()
 	{
 		//stopListening();
+		//gamemanager
+		entityMgr.clear();
+		delete ship;
+		ship = nullptr;
+
+
 	}
 
 

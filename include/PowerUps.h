@@ -1,18 +1,21 @@
 #pragma once
 #include "Entity.h"
+#include "resources_manager.h"
 
 using namespace kai;
 
 class PowerUp : public Entity
 {
 public:
-	float speed = 5.0f;
-	float radius = 10.0f;
+	float speed = 2.0f;
 
 	PowerUp()
 	{
+		name = "PowerUp";
 		active = false;
-		collider.radius = radius;
+		position = { 400.0f, 500.0f };
+		texture = kai::ResourcesManager::get().getTexture("PowerUp.png");
+		collider.radius = texture.width / 2.0f;
 	}
 
 	void update() override
@@ -26,7 +29,12 @@ public:
 
 	void draw() override
 	{
-		DrawCircleV(position, radius, YELLOW);
+		if (isActive() || texture.id != 0)
+		{
+			Vector2 pos = { position.x - texture.width / 2, position.y - texture.height / 2 };
+			DrawTextureEx(texture, pos, 0.0f, 1.0, WHITE);
+		}
+
 	}
 
 

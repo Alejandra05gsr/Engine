@@ -4,6 +4,7 @@
 #include "Circle.hpp"
 #include "kai_gui.hpp"
 #include "EventBus.hpp"
+#include "resources_manager.h"
 
 namespace kai 
 {
@@ -25,8 +26,18 @@ namespace kai
 		void OnExit() override;
 		void onEvent(EventData data) override;
 
+		Font font;
+		Sound sound;
+		Music bg_music;
+		kai::ResourcesManager& assets = kai::ResourcesManager::get();
+
+		Texture2D textureBG;
+
+
+
 
 
 	};
 }
 #endif // !MENU_HPP
+
