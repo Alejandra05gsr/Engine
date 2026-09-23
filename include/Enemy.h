@@ -9,8 +9,7 @@ class Enemy : public Entity
 {
 public:
 
-	float speed = 1.5f;
-	int radius = 3.0f;
+	float speed = 1.0f;
 
 	Enemy()
 	{

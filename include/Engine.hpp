@@ -3,6 +3,9 @@
 #include "Circle.hpp"
 #include "Play.hpp"
 #include "Menu.hpp"
+#include "WinScene.h"
+#include "GameOverScene.h"
+#include "Instructions.h"
 #include "scene_manager.hpp"
 
 namespace kai{

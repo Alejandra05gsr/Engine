@@ -14,13 +14,13 @@ public:
 		name = "PowerUp";
 		active = false;
 		position = { 400.0f, 500.0f };
-		texture = kai::ResourcesManager::get().getTexture("PowerUp.png");
+		texture = kai::ResourcesManager::get().getTexture("Star.png");
 		collider.radius = texture.width / 2.0f;
 	}
 
 	void update() override
 	{
-		position.y -= speed;
+		position.y += speed;
 		if (position.y >= 600.0f) 
 		{
 			active = false;

@@ -22,7 +22,7 @@ namespace kai {
 			return Vector2Distance(center, other.center) <= (radius + other.radius);
 		}
 
-		void debugDraw(Color color = GREEN)
+		void debugDraw(Color color = SKYBLUE)
 		{
 			DrawCircleLines((int)center.x, (int)center.y, radius, color);
 			DrawCircleV(center, 2.0f, color);

@@ -1,18 +1,39 @@
-#pragma once
+#ifndef GAMEOVER_SCENE_H
+#define GAMEOVER_SCENE_H
 #include "scene_manager.hpp"
+#include "EventBus.hpp"
+#include "resources_manager.h"
 
 using namespace kai;
 
-class GameOverScene : public Scene {
-	// Heredado vía Scene
-	void OnInit() override;
+namespace kai
+{
+	class GameOverScene : public Scene
+	{
+	public:
+		GameOverScene();
+		~GameOverScene();
 
-	void OnEnter() override;
+		// Heredado vía Scene
+		void OnInit() override;
 
-	void Update() override;
+		void OnEnter() override;
 
-	void Draw() override;
+		void Update() override;
 
-	void OnExit() override;
+		void Draw() override;
 
-};
+		void OnExit() override;
+
+
+		Font font;
+		Sound buttonSound;
+		Music bg_music;
+		kai::ResourcesManager& assets = kai::ResourcesManager::get();
+
+		Texture2D textureBG;
+
+
+	};
+}
+#endif // !GAMEOVER_SCENE_H

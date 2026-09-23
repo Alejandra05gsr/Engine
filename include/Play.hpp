@@ -1,8 +1,5 @@
-#ifndef PLAY_HPP
-#define PLAY_HPP
 #include "Scene.hpp"
 #include "EventBus.hpp"
-#include "player.hpp"
 #include "Ship.h"
 #include "EntityManager.h"
 #include "Bullet.h"
@@ -10,17 +7,21 @@
 #include "Enemy.h"
 #include "Score.h"
 #include "lives.h"
+#include "Coins.h"
 #include "PowerUps.h"
+#include "GameManager.h"
 
 #define MAX_BULLETS 30
-#define MAX_ENEMIES 20
+#define MAX_ENEMIES 40
 #define MAX_POWERUPS 5
 #define MAX_LIVES 3
+#define MAX_COINS 15
 
 
 namespace kai {
 	class Play : public Scene, EventListener {
 	private:
+		GameManager gameManager;
 
 	public:
 		Play() = default;
@@ -37,6 +38,9 @@ namespace kai {
 		void checkCollitions();
 		void spawnPowerUp(Vector2 position);
 		void spawnLives(Vector2 position);
+		void spawnCoins(Vector2 position);
+		void drawLivesHUD();
+
 
 
 		EntityManager entityMgr;
@@ -46,29 +50,35 @@ namespace kai {
 		Score* score;
 		Lives* lives;
 		PowerUp* powerups;
+		Coins* coins;
 	
 
 		float spawnTimer = 0.0f;
-		const float SPAWN_INTERVAL = 2.0f;
+		const float SPAWN_INTERVAL = 1.5f;
 
 
-
-		//int eventId_01;
-		//int eventId_02;
-		//int playerScore;
-		//int grabCoinEvId;
-		
+		bool isPowerUpActive = false;      
+		float powerUpTimer = 0.0f;         
+		const float POWER_UP_DURATION = 3.0f;
 		
 		//Resources
 		Font font;
-		Sound sound;
+
+		Sound damageSound;
+		Sound powerUpSound;
+		Sound lifeSound;
+		Sound coinsSound;
+		Sound enemySound;
+
+		Sound normalShootSound;
+		Sound powerUpShootSound;
+
 		Music bg_music;
 		kai::ResourcesManager& assets = kai::ResourcesManager::get();
 
 
-		//Prueba
 		Texture2D textureBG;
+		Texture2D lifeTexture;
 
 	};
-}
-#endif // !PLAY_HPP
+} 

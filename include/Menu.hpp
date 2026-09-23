@@ -1,7 +1,4 @@
-#ifndef MENU_HPP
-#define MENU_HPP
 #include "Scene.hpp"
-#include "Circle.hpp"
 #include "kai_gui.hpp"
 #include "EventBus.hpp"
 #include "resources_manager.h"
@@ -15,7 +12,6 @@ namespace kai
 
 	public:
 
-		Circle circles;
 		Menu();
 		~Menu();
 
@@ -27,9 +23,9 @@ namespace kai
 		void onEvent(EventData data) override;
 
 		Font font;
-		Sound sound;
 		Music bg_music;
 		kai::ResourcesManager& assets = kai::ResourcesManager::get();
+
 
 		Texture2D textureBG;
 
@@ -39,5 +35,5 @@ namespace kai
 
 	};
 }
-#endif // !MENU_HPP
+
 

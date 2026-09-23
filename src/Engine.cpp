@@ -18,8 +18,9 @@ namespace kai
 		
 		sceneMgr.addScene("menu", new Menu()); // Register the menu scene
 		sceneMgr.addScene("play", new Play()); // Register the play scene
-		//sceneMgr.addScene("win", new WinScene());
-		//sceneMgr.addScene ( "gameover", new GameOverScene());
+		sceneMgr.addScene("win", new WinScene());
+		sceneMgr.addScene ( "gameover", new GameOverScene());
+		sceneMgr.addScene ( "instructions", new Instructions());
 		sceneMgr.changeScene("menu"); // Set the initial scene to the menu
 
 		//sceneManager.ChangeScene(&menu); //Copia la direccion de memoria, no el objeto

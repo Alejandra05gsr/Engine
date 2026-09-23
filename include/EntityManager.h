@@ -3,10 +3,8 @@
 #include <vector>
 
 
-
-
 namespace kai{
-}
+
 class EntityManager
 {
 public:
@@ -52,7 +50,8 @@ public:
 
 	void clear()
 	{
-
+		entities.clear();
 	}
 
 };
+}
