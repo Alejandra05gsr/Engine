@@ -1,3 +1,74 @@
+# 🌊 Clean the Ocean 🐢
+
+Clean the Ocean es una experiencia con un enfoque ecológico y concientización ambiental. Juegas como una tortuga marina la cual tiene como misión limpiar lo más posible la basura arrojada al océano evitando quedar enredado en esa basura, obteniendo recompensas y rescatando el ecosistema.
+
+
+---
+
+## 🫧 Sinopsis
+
+Después de un tiempo el océano atraviesa una crisis debido a toda la basura desechada que se ha estado acumulando. En este juego tomas el papel de una gran tortuga marina que tiene como misión quitar la mayor cantidad de basura posible. A lo largo de la partida podrás recolectar conchas que darán más puntos, recuperar vidas y obtener un potente "Power Up" que hace que el disparo sea aun mejor para eliminar mucho mejor la basura.
+
+---
+
+## 🎨 Identidad Visual y Arte Original
+
+> **Todo el apartado gráfico y artístico fue creado de forma totalmente original para este proyecto.**
+
+Se buscó mantener una **coherencia visual en la paleta de colores** (tonos marinos y elementos bien contrastados), legibilidad en la tipografía y una alineación cuidada de la interfaz (HUD) para garantizar una experiencia limpia y pulida.
+
+Algunos de los assets originales son los siguientes:
+
+**Jugador**
+
+<img width="192" height="64" alt="AnimacionTortuga" src="https://github.com/user-attachments/assets/e8cf4c59-fab4-45df-adfa-527dc8c3e1c4" />
+
+
+
+
+
+**Fondos**
+
+<img width="800" height="600" alt="FondoMarino1" src="https://github.com/user-attachments/assets/19664f42-0971-4c02-839c-a0ad412ecf55" />
+
+<img width="800" height="600" alt="OceanoLimpio" src="https://github.com/user-attachments/assets/0ef4efa7-52c9-41df-bde7-2b4ea3ccb0fb" />
+
+<img width="800" height="600" alt="OceanoSucio" src="https://github.com/user-attachments/assets/3ee3e83b-70d6-4377-a42c-6560b9169d3e" />
+
+
+
+
+
+**Assets**
+
+<img width="32" height="32" alt="Shell" src="https://github.com/user-attachments/assets/0c7aad42-a0ce-4337-9afe-ecbd9b169e30" /> <img width="32" height="32" alt="Star" src="https://github.com/user-attachments/assets/25a389cc-666b-4824-aa75-a33b1a191577" />  <img width="32" height="32" alt="Life" src="https://github.com/user-attachments/assets/7922f77a-2959-4ae3-835d-18c0b451e1d7" />
+
+<img width="40" height="40" alt="Basura1" src="https://github.com/user-attachments/assets/75212255-e886-4699-902c-745fc3ecb40b" /> <img width="40" height="40" alt="Basura2" src="https://github.com/user-attachments/assets/21c12dd5-6660-4532-9e2c-d2db6988256d" /> <img width="40" height="40" alt="Basura3" src="https://github.com/user-attachments/assets/b6d8347b-9566-4f19-a19a-a04289f10f37" />
+
+
+---
+
+## 🎮 Controles
+
+| Acción | Teclado |
+| :--- | :--- |
+| **Movimiento (Arriba / Abajo / Izquierda / Derecha)** | <kbd>W</kbd> <kbd>S</kbd> <kbd>A</kbd> <kbd>D</kbd>  o  Flechas <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> |
+| **Disparar** | <kbd>Espacio</kbd> |
+| **Volver al Menú (Pantallas de fin de juego)** | <kbd>M</kbd> |
+| **Reiniciar Partida (Pantallas de fin de juego)** | <kbd>R</kbd> |
+
+---
+
+## 📂 Estructura del Proyecto
+
+El código fuente está estrictamente organizado para permitir su ejecución directa con rutas relativas hacia la carpeta de recursos (`/assets`):
+
+```text
+├── assets/             # Texturas, fuentes y efectos de sonido (rutas relativas)
+├── src/                # Archivos de código fuente C++ (.cpp y .h / .hpp)
+├── .gitignore          # Configurado para ignorar ejecutables y carpetas de build
+└── README.md
+
 # Raylib-Quickstart
 A simple cross platform template for setting up a project with the bleeding edge raylib code.
 Works with C or C++.
