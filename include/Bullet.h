@@ -16,8 +16,6 @@ public:
 	float speedX = 0.0f;
 	BulletType type = BulletType::NORMAL;
 
-
-	//float radius = 3.0f;
 	Bullet()
 	{
 		name = "Bullet";
@@ -50,7 +48,6 @@ public:
 
 	void update() override
 	{
-		//if (!isActive) return;
 		if (!active) return;
 
 		position.y -= speed;
@@ -60,7 +57,6 @@ public:
 		{
 			active = false;
 		}
-
 	}
 
 
@@ -70,7 +66,6 @@ public:
 
 		Vector2 pos = { position.x - texture.width / 2, position.y - texture.height / 2 };
 		DrawTextureEx(texture, pos, 0.0f, 1.0, WHITE);
-		//DrawCircleV(position, 2.0f, WHITE);
 	}
 
 

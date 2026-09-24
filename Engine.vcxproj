@@ -314,6 +314,7 @@
     <ClInclude Include="include\EventBus.hpp" />
     <ClInclude Include="include\GameManager.h" />
     <ClInclude Include="include\GameOverScene.h" />
+    <ClInclude Include="include\HUDCanvas.hpp" />
     <ClInclude Include="include\Instructions.h" />
     <ClInclude Include="include\json.hpp" />
     <ClInclude Include="include\kai_gui.hpp" />
@@ -329,6 +330,7 @@
     <ClInclude Include="include\scene_manager.hpp" />
     <ClInclude Include="include\Score.h" />
     <ClInclude Include="include\Ship.h" />
+    <ClInclude Include="include\SpriteAnimator.h" />
     <ClInclude Include="include\WinScene.h" />
   </ItemGroup>
   <ItemGroup>

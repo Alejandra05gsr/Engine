@@ -10,18 +10,19 @@
 #include "Coins.h"
 #include "PowerUps.h"
 #include "GameManager.h"
+#include "HUDCanvas.hpp"
 
 #define MAX_BULLETS 30
 #define MAX_ENEMIES 40
 #define MAX_POWERUPS 5
 #define MAX_LIVES 3
-#define MAX_COINS 15
-
+#define MAX_COINS 7
 
 namespace kai {
 	class Play : public Scene, EventListener {
 	private:
 		GameManager gameManager;
+		HUDCanvas hudCanvas;
 
 	public:
 		Play() = default;
@@ -39,18 +40,16 @@ namespace kai {
 		void spawnPowerUp(Vector2 position);
 		void spawnLives(Vector2 position);
 		void spawnCoins(Vector2 position);
-		void drawLivesHUD();
-
 
 
 		EntityManager entityMgr;
-		Ship* ship;
-		Bullet* bullets;
-		Enemy* enemies;
-		Score* score;
-		Lives* lives;
-		PowerUp* powerups;
-		Coins* coins;
+		Ship* ship = nullptr;
+		Bullet* bullets = nullptr;
+		Enemy* enemies = nullptr;
+		Score* score = nullptr;
+		Lives* lives = nullptr;
+		PowerUp* powerups = nullptr;
+		Coins* coins = nullptr;
 	
 
 		float spawnTimer = 0.0f;

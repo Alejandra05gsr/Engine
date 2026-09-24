@@ -28,7 +28,6 @@ namespace kai
 		kai::ResourcesManager& assets = kai::ResourcesManager::get();
 
 		Texture2D textureBG;
-
 	};
 }
 #endif // !WIN_SCENE_H

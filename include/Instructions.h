@@ -12,7 +12,6 @@ namespace kai
 		Instructions();
 		~Instructions();
 
-		// Heredado vía Scene
 		void OnInit() override;
 		void OnEnter() override;
 		void Update() override;

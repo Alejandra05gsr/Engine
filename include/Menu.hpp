@@ -28,11 +28,6 @@ namespace kai
 
 
 		Texture2D textureBG;
-
-
-
-
-
 	};
 }
 

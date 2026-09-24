@@ -7,7 +7,7 @@ using namespace kai;
 class PowerUp : public Entity
 {
 public:
-	float speed = 2.0f;
+	float speed = 1.0f;
 
 	PowerUp()
 	{
@@ -34,8 +34,5 @@ public:
 			Vector2 pos = { position.x - texture.width / 2, position.y - texture.height / 2 };
 			DrawTextureEx(texture, pos, 0.0f, 1.0, WHITE);
 		}
-
 	}
-
-
 };

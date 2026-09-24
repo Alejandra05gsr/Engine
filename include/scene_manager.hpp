@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include "Scene.hpp"
+
 namespace kai {
 	class SceneManager 
 	{
@@ -15,6 +16,7 @@ namespace kai {
 			static SceneManager instance;
 			return instance;
 		}
+
 		SceneManager(const SceneManager&) = delete; //Constructor copia
 		void operator=(const SceneManager&) = delete;
 

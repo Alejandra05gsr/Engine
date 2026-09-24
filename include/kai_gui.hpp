@@ -23,8 +23,5 @@ namespace kai
 		~PlayGUI() = default;
 		void drawGUI() override;
 	};
-
-
-
 }
 #endif // !KAI_GUI_HPP

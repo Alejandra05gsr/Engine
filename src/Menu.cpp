@@ -20,7 +20,6 @@ namespace kai
 
 	void Menu::OnInit() 
 	{
-		// Code to execute when initializing the menu scene
 		textureBG = kai::ResourcesManager::get().getTexture("FondoMarino1.png");
 		bg_music = kai::ResourcesManager::get().getMusic("MenuMusic.mp3");
 		PlayMusicStream(bg_music);

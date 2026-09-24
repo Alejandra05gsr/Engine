@@ -7,12 +7,15 @@
 class GameManager : public EventListener
 {
 public:
-	int max_kills = 1;
-	int curret_kills = 0;
-	int max_player_lives = 1;
-	int player_lives = 1;
+	int max_kills = 20;
+	int current_kills = 0;
+	int max_player_lives = 5;
+	int player_lives = 5;
+
+	static inline int last_final_score = 0;
 
 	int getLives() const { return player_lives; }
+
 
 	void init() {
 		reset();
@@ -22,15 +25,16 @@ public:
 	}
 
 	void exit() {
-		EventBus::get().unbind("player_kill", 0);
-		EventBus::get().unbind("enemy_kill", 0);
-		EventBus::get().unbind("gain_life", 0);
+		//EventBus::get().unbind("player_kill", 0);
+		//EventBus::get().unbind("enemy_kill", 0);
+		//EventBus::get().unbind("gain_life", 0);
 	}
 
 	void onEnemyHit() {
-		curret_kills++;
-		TraceLog(LOG_INFO, "Enemy killed. Current kills: %i", curret_kills);
-		if (curret_kills >= max_kills) {
+		current_kills++;
+		last_final_score = current_kills;
+		TraceLog(LOG_INFO, "Enemy killed. Current kills: %i", current_kills);
+		if (current_kills >= max_kills) {
 			kai::SceneManager::get().changeScene("win");
 		}
 
@@ -40,12 +44,12 @@ public:
 		player_lives--;
 		TraceLog(LOG_INFO, "Player hit. Remaining lives: %i", player_lives);
 		if (player_lives <= 0) {
-			kai::SceneManager::get().changeScene("gameover"); //gameover
+			kai::SceneManager::get().changeScene("gameover");
 		}
 	}
 
 	void onGainLife() {
-		if (player_lives < max_player_lives) { // Evita superar el máximo
+		if (player_lives < max_player_lives) { 
 			player_lives++;
 			TraceLog(LOG_INFO, "Life gained! Current lives: %i", player_lives);
 		}
@@ -68,7 +72,7 @@ public:
 	}
 
 	void reset() {
-		curret_kills = 0;
+		current_kills = 0;
 		player_lives = max_player_lives;
 	}
 };

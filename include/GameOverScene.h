@@ -29,9 +29,8 @@ namespace kai
 		Font font;
 		Sound buttonSound;
 		Music bg_music;
-		kai::ResourcesManager& assets = kai::ResourcesManager::get();
-
 		Texture2D textureBG;
+		kai::ResourcesManager& assets = kai::ResourcesManager::get();
 
 
 	};

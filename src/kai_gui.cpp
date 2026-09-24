@@ -36,12 +36,6 @@ namespace kai
 				PlaySound(buttonSound);
 				CloseWindow();
 			}
-			//if (GuiButton(Rectangle{ 300, 500, 200, 50 }, "Credits"))
-			//{
-			//	//Credits
-			//	SceneManager::get().changeScene("credits");
-			//}
-
 		}
 	}
 

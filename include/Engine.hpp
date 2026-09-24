@@ -14,9 +14,6 @@ namespace kai{
 		Engine() = default;
 		~Engine() = default;
 
-		//Play play;
-		//Menu menu;
-
 		void Init(); //Inicializa
 		void Run(); //Update y draw
 		void Update(); //Hace el update
@@ -27,8 +24,6 @@ namespace kai{
 
 		int screenWidth = 800;
 		int screenHeight = 600;
-
-
 	};
 
 }

@@ -1,21 +1,25 @@
 #pragma once
 #include "Entity.h"
 #include "resources_manager.h"
+#include "SpriteAnimator.h"
+
 namespace kai {
 	class Ship : public Entity
 	{
 	public:
-		float speed = 10.0f;
+		float speed = 3.0f;
 		Sound movementSound;
+		SpriteAnimator animator;
 
 		Ship()
 		{
 			name = "Turtle";
 			active = true;
 			position = { 400.0f, 300.0f };
-			texture = kai::ResourcesManager::get().getTexture("Turtle.png");
+			texture = kai::ResourcesManager::get().getTexture("AnimacionTortuga.png");
 			movementSound = kai::ResourcesManager::get().getSound("Movement.wav");
-			collider.radius = texture.width / 2.0f;
+			animator.init(texture, 3, 4);
+			collider.radius = animator.getFrameWidth() / 2.0f;
 		}
 
 		~Ship()
@@ -26,33 +30,46 @@ namespace kai {
 
 		void update() override
 		{
+			bool isMoving = false;
 
 			if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_D))
 			{
 				position.x += speed;
-				PlaySound(movementSound);
+				isMoving = true;
 			}
 			if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_A))
 			{
 				position.x -= speed;
-				PlaySound(movementSound);
+				isMoving = true;
 			}
 			if (IsKeyDown(KEY_UP) || IsKeyDown(KEY_W))
 			{
 				position.y -= speed;
-				PlaySound(movementSound);
+				isMoving = true;
 			}
 			if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
 			{
 				position.y += speed;
-				PlaySound(movementSound);
+				isMoving = true;
 			}
 
-			// 2. Límites de la pantalla (Clamp)
-			float halfWidth = texture.width / 2.0f;
-			float halfHeight = texture.height / 2.0f;
+			if (isMoving)
+			{
+				if (!IsSoundPlaying(movementSound))
+				{
+					PlaySound(movementSound);
+				}
+				animator.update(); 
+			}
+			else
+			{
+				StopSound(movementSound);
+			}
 
-			// Límite Izquierda y Derecha
+			float halfWidth = animator.getFrameWidth() / 2.0f;
+			float halfHeight = animator.getFrameHeight() / 2.0f;
+
+
 			if (position.x - halfWidth < 0.0f)
 			{
 				position.x = halfWidth;
@@ -61,8 +78,6 @@ namespace kai {
 			{
 				position.x = (float)GetScreenWidth() - halfWidth;
 			}
-
-			// Límite Arriba y Abajo
 			if (position.y - halfHeight < 0.0f)
 			{
 				position.y = halfHeight;
@@ -71,15 +86,16 @@ namespace kai {
 			{
 				position.y = (float)GetScreenHeight() - halfHeight;
 			}
+
+
 		}
 
 
 		void draw() override
 		{
-			if (isActive() || texture.id != 0)
+			if (isActive())
 			{
-				Vector2 pos = { position.x - texture.width / 2, position.y - texture.height / 2 };
-				DrawTextureEx(texture, pos, 0.0f, 1.0, WHITE);
+				animator.draw(position);
 			}
 
 		}

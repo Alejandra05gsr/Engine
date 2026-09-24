@@ -27,8 +27,5 @@ namespace kai {
 			DrawCircleLines((int)center.x, (int)center.y, radius, color);
 			DrawCircleV(center, 2.0f, color);
 		}
-
-
-
 	};
 }

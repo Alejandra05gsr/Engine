@@ -1,18 +1,14 @@
 #include "Play.hpp"
 #include "raylib.h"
 #include "Entity.h"
-#include <iostream>
 #include "resources_manager.h"
-#include <fstream>
 
-#include "json.hpp"
 
 
 namespace kai {
 	void Play::OnInit()
 	{
 		gameManager.init();
-		gameManager.reset();
 
 		ship = new Ship();
 		enemies = new Enemy[MAX_ENEMIES];
@@ -22,10 +18,12 @@ namespace kai {
 		coins = new Coins[MAX_COINS];
 		score = new Score();
 
+		hudCanvas.init(&gameManager);
+
 		ship->setPosition(300, 550);
 		bullets->setPosition(300, 500);
 
-
+		entityMgr.clear();
 
 		entityMgr.add(ship);
 
@@ -59,7 +57,7 @@ namespace kai {
 		//Resources
 		font = assets.getFont("SpaceFont3.ttf");
 
-		damageSound = kai::ResourcesManager::get().getSound("Movement.wav");
+		damageSound = kai::ResourcesManager::get().getSound("Damage.wav");
 		powerUpSound = kai::ResourcesManager::get().getSound("PowerUp.wav");
 		lifeSound = kai::ResourcesManager::get().getSound("Life.wav");
 		coinsSound = kai::ResourcesManager::get().getSound("Coin.wav");
@@ -84,14 +82,30 @@ namespace kai {
 
 	void Play::OnEnter()
 	{
+
 		PlayMusicStream(bg_music);
+
+		gameManager.reset();
+		isPowerUpActive = false;
+		powerUpTimer = 0.0f;
+		spawnTimer = 0.0f;
+
+		if (ship != nullptr) {
+			ship->setPosition(300, 550);
+		}
+
+		for (int i = 0; i < MAX_BULLETS; i++) bullets[i].active = false;
+		for (int i = 0; i < MAX_ENEMIES; i++) enemies[i].active = false;
+		for (int i = 0; i < MAX_POWERUPS; i++) powerups[i].active = false;
+		for (int i = 0; i < MAX_LIVES; i++) lives[i].active = false;
+		for (int i = 0; i < MAX_COINS; i++) coins[i].active = false;
 	}
 
 
 	void Play::Update()
 	{
 		UpdateMusicStream(bg_music);
-		DrawTextureEx(textureBG,{0.0f,0.0f}, 0.0f, 1.0, WHITE);
+
 
 
 		//PowerUp 
@@ -127,11 +141,11 @@ namespace kai {
 
 	void Play::Draw()
 	{
+		DrawTextureEx(textureBG, { 0.0f,0.0f }, 0.0f, 1.0, WHITE);
 		entityMgr.draw();
-		DrawTextEx(font, "Clean 20 garbage", {50, 50}, 30, 0, WHITE);
 		score->draw();
 
-		drawLivesHUD();
+		hudCanvas.draw();
 	}
 
 
@@ -169,6 +183,7 @@ namespace kai {
 			}
 		}
 	}
+
 
 	void Play::checkCollitions()
 	{
@@ -240,7 +255,7 @@ namespace kai {
 			{
 				if (lives[i].colldiesWith(*ship))
 				{
-					lives[i].active = false; // Desaparece el objeto de vida recogido
+					lives[i].active = false;
 
 					PlaySound(lifeSound);
 
@@ -258,9 +273,8 @@ namespace kai {
 			{
 				if (powerups[i].colldiesWith(*ship))
 				{
-					powerups[i].active = false; // El PowerUp desaparece de la pantalla
+					powerups[i].active = false; 
 
-					// Se activa el disparo triple durante 5 segundos
 					isPowerUpActive = true;
 					powerUpTimer = POWER_UP_DURATION;
 
@@ -296,8 +310,9 @@ namespace kai {
 		{
 			if (!enemies[i].active)
 			{
-				enemies[i].position = Vector2{(float)GetRandomValue(0,GetScreenWidth()), 20.0f};
-				enemies[i].active = true;
+				Vector2 spawnPos = { (float)GetRandomValue(0, GetScreenWidth()), 20.0f };
+
+				enemies[i].spawn(spawnPos);
 				break;
 			}
 		}
@@ -343,23 +358,6 @@ namespace kai {
 	}
 
 
-
-	void Play::drawLivesHUD()
-	{
-		int currentLives = gameManager.getLives();
-		float spacing = 10.0f;
-		float iconWidth = (float)lifeTexture.width;
-		float iconHeight = (float)lifeTexture.height;
-
-		float startX = (float)GetScreenWidth() - 20.0f - iconWidth;
-		float startY = (float)GetScreenHeight() - 20.0f - iconHeight;
-
-		for (int i = 0; i < currentLives; i++)
-		{
-			Vector2 pos = { startX - (i * (iconWidth + spacing)), startY };
-			DrawTextureEx(lifeTexture, pos, 0.0f, 1.0f, WHITE);
-		}
-	}
 
 
 	void Play::OnExit()

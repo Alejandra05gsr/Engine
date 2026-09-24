@@ -7,7 +7,7 @@ using namespace kai;
 class Coins : public Entity
 {
 public:
-	float speed = 2.0f;
+	float speed = 1.0f;
 
 	Coins()
 	{
