@@ -1,3 +1,115 @@
+# 🌊 Clean the Ocean 
+
+Clean the Ocean es una experiencia con un enfoque ecológico y concientización ambiental. Juegas como una tortuga marina la cual tiene como misión limpiar lo más posible la basura arrojada al océano evitando quedar enredado en esa basura, obteniendo recompensas y rescatando el ecosistema.
+
+> **El proyecto se puede observar en la rama "Proyecto Final".**
+---
+
+## 🐢 Sinopsis
+
+Después de un tiempo el océano atraviesa una crisis debido a toda la basura desechada que se ha estado acumulando. En este juego tomas el papel de una gran tortuga marina que tiene como misión quitar la mayor cantidad de basura posible. A lo largo de la partida podrás recolectar conchas que darán más puntos, recuperar vidas y obtener un potente "Power Up" que hace que el disparo sea aun mejor para eliminar mucho mejor la basura.
+
+---
+
+
+## 🎮 Controles
+
+| Acción | Teclado |
+| :--- | :--- |
+| **Movimiento (Arriba / Abajo / Izquierda / Derecha)** | <kbd>W</kbd> <kbd>S</kbd> <kbd>A</kbd> <kbd>D</kbd>  o  Flechas <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> |
+| **Disparar** | <kbd>Espacio</kbd> |
+| **Volver al Menú (Pantallas de fin de juego)** | <kbd>M</kbd> |
+| **Reiniciar Partida (Pantallas de fin de juego)** | <kbd>R</kbd> |
+
+---
+
+
+## 🫧 Identidad Visual y Arte Original
+
+> **El apartado gráfico y artístico mostrado en esta sección ha sido creado de forma totalmente original para este proyecto.**
+
+Se buscó mantener una **coherencia visual en la paleta de colores** (tonos marinos y elementos bien contrastados), legibilidad en la tipografía y una alineación cuidada de la interfaz (HUD) para garantizar una experiencia limpia y pulida.
+
+Algunos de los assets originales son los siguientes:
+
+
+**Jugador:**
+El jugador cuenta con un sprite en donde se puede observar una tortuga marina color verde con caparazón café. La animación cuenta con 3 sprites y se muestra a la tortuga moviendo sus extremidades para poder nadar.
+
+<img width="64" height="64" alt="Turtle" src="https://github.com/user-attachments/assets/772b7691-94cf-4aed-8675-e607fcfe972b" />
+
+
+
+**Assets:**
+Los assets que se han realizado son basura y componentes que caen aleatoriamente después de eliminar una basura, estos son: 
+
+Componentes:
+- Una concha marina que al tocarla da puntos.
+- Una estrella la cual es el power up para poder disparar mejor.
+- Un corazon que da más vidas.
+
+<img width="32" height="32" alt="Shell" src="https://github.com/user-attachments/assets/0c7aad42-a0ce-4337-9afe-ecbd9b169e30" /> <img width="32" height="32" alt="Star" src="https://github.com/user-attachments/assets/25a389cc-666b-4824-aa75-a33b1a191577" />  <img width="32" height="32" alt="Life" src="https://github.com/user-attachments/assets/7922f77a-2959-4ae3-835d-18c0b451e1d7" />
+
+Basura:
+- Una botella de plastico verde.
+- Una bolsa de plastico gris.
+- Una bolsa de papas naranja.
+
+<img width="40" height="40" alt="Basura1" src="https://github.com/user-attachments/assets/75212255-e886-4699-902c-745fc3ecb40b" /> <img width="40" height="40" alt="Basura2" src="https://github.com/user-attachments/assets/21c12dd5-6660-4532-9e2c-d2db6988256d" /> <img width="40" height="40" alt="Basura3" src="https://github.com/user-attachments/assets/b6d8347b-9566-4f19-a19a-a04289f10f37" />
+
+
+
+**Fondos:**
+Se han trabajado 4 fondos, estos son los fondos que se han ocupado para el menu, al ganar la partida, al paerder la partida y cuando se muestran las instrucciones. En todos los fondos se muestra el fondo del oceano, en cada una de estas se ha intentado mostrar que es lo que está ocurriendo en el juego siendo que en el fondo  del menu todo luce neutro, en el fondo de ganar el océano luce más limipio y con brillo, en el fondo de perder se muestra un océano sucio con colores verdosos y con basura, y por último en las instrucciones solo se muestra el fondo del océano para dejarlo neutro y sin distracciones o elementos que tapen las letras o dibujos. 
+
+Fondo de Menu
+
+<img width="800" height="600" alt="FondoMarino1" src="https://github.com/user-attachments/assets/19664f42-0971-4c02-839c-a0ad412ecf55" />
+
+Fondo de Ganar
+
+<img width="800" height="600" alt="OceanoLimpio" src="https://github.com/user-attachments/assets/0ef4efa7-52c9-41df-bde7-2b4ea3ccb0fb" />
+
+Fondo de Perder
+
+<img width="800" height="600" alt="OceanoSucio" src="https://github.com/user-attachments/assets/3ee3e83b-70d6-4377-a42c-6560b9169d3e" />
+
+Fondo de Instrucciones
+
+<img width="800" height="600" alt="OceanoInstrucciones" src="https://github.com/user-attachments/assets/c25818a0-a61a-4534-9888-0e0ce99a150d" />
+
+
+---
+
+## 🎬 Sistema de Animación (Sprite Animation)
+
+El personaje principal (la tortuga) utiliza una **animación basada en Spritesheets** creada a mano, procesada mediante recortes de fotogramas (`Rectangle`) actualizados en tiempo real:
+
+* **Técnica:** Recorte dinámico de fotogramas (*Source Rectangle*) sobre una textura acumulativa de la tortuga (`AnimacionTortuga.png`).
+* **Implementación:** Manejo de un temporizador de cuadros por segundo (*Frame Speed / Frame Time*) dentro del método `Update()` para conmutar las coordenadas `X` de la textura, logrando un movimiento fluido de aleteo al nadar.
+
+
+<img width="192" height="64" alt="AnimacionTortuga" src="https://github.com/user-attachments/assets/9d4601cd-ece3-4403-b6a4-36bce807f955" />
+<img width="64" height="64" alt="Turtle" src="https://github.com/user-attachments/assets/aa52c032-60c1-4fed-97c1-5f130f0eafb0" />
+
+
+---
+
+
+## 📂 Estructura del Proyecto
+
+El código fuente está estrictamente organizado para permitir su ejecución directa con rutas relativas hacia la carpeta de recursos (`/assets`):
+
+```text
+├── resources/             # Texturas, fuentes y efectos de sonido (rutas relativas)
+├── include/            # Archivos de cabecera (.h / .hpp)
+├── src/                # Archivos de código fuente C++ (.cpp y .h / .hpp)
+├── .gitignore          # Configurado para ignorar ejecutables y carpetas de build
+└── README.md
+
+
+```
+
 # Raylib-Quickstart
 A simple cross platform template for setting up a project with the bleeding edge raylib code.
 Works with C or C++.
@@ -158,4 +270,5 @@ Different libraries will have different dependencies on different platforms.
 
 # License
 Raylib-Quickstart by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit https://creativecommons.org/publicdomain/zero/1.0/
+
 
