@@ -9,53 +9,33 @@ namespace kai
 	MenuGUI::MenuGUI()
 	{
 		position = { GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f};
+		buttonSound = kai::ResourcesManager::get().getSound("Button.mp3");
 		//size = { 200, 300 };
 		//active = true;
 
 	}
 	void MenuGUI::drawGUI()
 	{
-		/*GuiButton(Rectangle{ 100, 100, 200, 50 }, "Play");
-		GuiButton(Rectangle{ 100, 200, 200, 50 }, "Option");
-		GuiButton(Rectangle{ 100, 300, 200, 50 }, "Exit");
-		GuiButton(Rectangle{ 100, 400, 200, 50 }, "Credits");*/
-
-
 		if (isActive)
 		{
 
-			if (GuiButton(Rectangle{ 100, 100, 200, 50 }, "Play"))
+			if (GuiButton(Rectangle{ 300, 200, 200, 50 }, "Play"))
 			{
-				//Handle Play button active 
+				PlaySound(buttonSound);
 				SceneManager::get().changeScene("play");
 				EventBus::get().fire("start_game");
 			}
 
-			if (GuiButton(Rectangle{ 100, 200, 200, 50 }, "Option"))
+			if (GuiButton(Rectangle{ 300, 300, 200, 50 }, "Instructions"))
 			{
-				//Options
-				SceneManager::get().changeScene("options");
+				PlaySound(buttonSound);
+				SceneManager::get().changeScene("instructions");
 			}
-			if (GuiButton(Rectangle{ 100, 300, 200, 50 }, "Exit"))
+			if (GuiButton(Rectangle{ 300, 400, 200, 50 }, "Exit"))
 			{
-				//Exit
-				SceneManager::get().changeScene("exit");
+				PlaySound(buttonSound);
+				CloseWindow();
 			}
-			if (GuiButton(Rectangle{ 100, 400, 200, 50 }, "Credits"))
-			{
-				//Credits
-				SceneManager::get().changeScene("credits");
-			}
-
-			/*Rectangle startButtonRect = { 100, 100, 200, 50 };
-			if (GuiButton(startButtonRect, "Start Game"))
-			{
-				SceneManager::get().changeScene("play");
-				EventBus::get().fire("start_game");
-			}*/
-			//GuiButton((Rectangle) { 100, 200, 200, 50 }, "Options");
-			//GuiButton((Rectangle) { 100, 300, 200, 50 }, "Exit");
-
 		}
 	}
 

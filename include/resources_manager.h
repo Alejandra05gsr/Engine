@@ -13,22 +13,50 @@ namespace kai
 			return rm;
 		}
 
+
+		~ResourcesManager()
+		{
+			// Texturas
+			for (auto& resource : textures) {
+				UnloadTexture(resource.second);
+			}
+			textures.clear();
+
+			//Fuentes
+			for (auto& resource : fonts) {
+				UnloadFont(resource.second);
+			}
+			fonts.clear();
+
+			//Sonidos
+			for (auto& resource : sounds) {
+				UnloadSound(resource.second);
+			}
+			sounds.clear();
+
+			//Música
+			for (auto& resource : music) {
+				UnloadMusicStream(resource.second);
+			}
+			music.clear();
+		}
+
+
+
+		//Texturas
 		Texture2D& getTexture(const std::string& file)
 		{
 			//La ruta completa
 			std::string fullPath = texturePath + file;
 
-
 			//Busco que la fuente este cargada
 			auto it = textures.find(fullPath); //Se llama desde el hashmap, devuelve un iterador y le paso el path completo a la textura que estoy buscando
 
-			
 			//Si no esta cargada
 			if (it != textures.end())
 			{
 				return it->second;
 			}
-
 
 
 			//Si existe la cargo y devuelvo la fuente
@@ -41,25 +69,17 @@ namespace kai
 			}
 
 			textures[fullPath] = LoadTexture(fullPath.c_str());
-
 			return textures[fullPath];
-
-
 		}
 
-
-		//Ejemplo de cargar fuente: Font font = LoadFontEx("resources/KAISG.ttf", 96, 0, 0);
-		//Ejemplo de dibujar fuente: DrawTextEx(font, msg, fontPosition, fontSize, 0, BLACK);
-
+		//Fuentes
 		Font& getFont(const std::string& file)
 		{
 			//La ruta completa
 			std::string fullPath = fontPath + file;
 
-
 			//Busco que la fuente este cargada
 			auto it = fonts.find(fullPath);
-
 
 			//Si no esta cargada
 			if (it != fonts.end())
@@ -79,20 +99,16 @@ namespace kai
 			//Si existe la cargo y devuelvo la fuente
 			fonts[fullPath] = LoadFontEx(fullPath.c_str(), 16, 0, 0); //Nombre, tamaño
 			return fonts[fullPath];
-
 		}
 
-
-
+		//Sonidos
 		Sound& getSound(const std::string& file)
 		{
 			//La ruta completa
 			std::string fullPath = soundPath + file;
 
-
 			//Busco que la fuente este cargada
 			auto it = sounds.find(fullPath);
-
 
 			//Si no esta cargada
 			if (it != sounds.end())
@@ -112,18 +128,16 @@ namespace kai
 			//Si existe la cargo y devuelvo la fuente
 			sounds[fullPath] = LoadSound(fullPath.c_str());
 			return sounds[fullPath];
-
 		}
 
+		//Musica
 		Music& getMusic(const std::string& file)
 		{
 			//La ruta completa
 			std::string fullPath = musicPath + file;
 
-
 			//Busco que la fuente este cargada
 			auto it = music.find(fullPath);
-
 
 			//Si no esta cargada
 			if (it != music.end())
@@ -143,8 +157,8 @@ namespace kai
 			//Si existe la cargo y devuelvo la fuente
 			music[fullPath] = LoadMusicStream(fullPath.c_str()); //Cargo la musica
 			return music[fullPath];
-
 		}
+
 
 
 	private:
@@ -163,7 +177,6 @@ namespace kai
 		//Musica (Se carga diferente)
 		std::unordered_map <std::string, Music> music;
 		std::string musicPath = "music/";
-
 
 	};
 }

@@ -25,10 +25,6 @@ public:
 	void draw()
 	{
 		std::string scoreTxt = "Puntos: " + std::to_string(scorePoints);
-		//TraceLog(LOG_INFO, scoreTxt());
 		DrawTextEx(scoreFont, scoreTxt.c_str(), {50, 550}, 16, 0, WHITE);
-
 	}
-
-
 };

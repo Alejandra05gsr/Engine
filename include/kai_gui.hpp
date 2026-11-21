@@ -2,6 +2,7 @@
 #define KAI_GUI_HPP
 
 #include "Canvas.hpp"
+#include "resources_manager.h"
 
 namespace kai
 {
@@ -12,6 +13,7 @@ namespace kai
 		~MenuGUI() = default;
 		void drawGUI() override;
 		int playBttnId;
+		Sound buttonSound;
 
 	};
 
@@ -21,6 +23,5 @@ namespace kai
 		~PlayGUI() = default;
 		void drawGUI() override;
 	};
-
 }
 #endif // !KAI_GUI_HPP

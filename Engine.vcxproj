@@ -306,17 +306,23 @@
     <ClInclude Include="include\Canvas.hpp" />
     <ClInclude Include="include\Circle.hpp" />
     <ClInclude Include="include\circle_collider.h" />
+    <ClInclude Include="include\Coins.h" />
     <ClInclude Include="include\Enemy.h" />
     <ClInclude Include="include\Engine.hpp" />
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EventBus.hpp" />
-    <ClInclude Include="include\game_manager.h" />
-    <ClInclude Include="include\game_over_scene.h" />
+    <ClInclude Include="include\GameManager.h" />
+    <ClInclude Include="include\GameOverScene.h" />
+    <ClInclude Include="include\HUDCanvas.hpp" />
+    <ClInclude Include="include\Instructions.h" />
+    <ClInclude Include="include\json.hpp" />
     <ClInclude Include="include\kai_gui.hpp" />
+    <ClInclude Include="include\lives.h" />
     <ClInclude Include="include\Menu.hpp" />
     <ClInclude Include="include\Play.hpp" />
     <ClInclude Include="include\player.hpp" />
+    <ClInclude Include="include\PowerUps.h" />
     <ClInclude Include="include\raygui.h" />
     <ClInclude Include="include\resources_manager.h" />
     <ClInclude Include="include\resource_dir.h" />
@@ -324,15 +330,18 @@
     <ClInclude Include="include\scene_manager.hpp" />
     <ClInclude Include="include\Score.h" />
     <ClInclude Include="include\Ship.h" />
-    <ClInclude Include="include\win_scene.h" />
+    <ClInclude Include="include\SpriteAnimator.h" />
+    <ClInclude Include="include\WinScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Circle.cpp" />
     <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\GameOverScene.cpp" />
+    <ClCompile Include="src\Instructions.cpp" />
     <ClCompile Include="src\kai_gui.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Play.cpp" />
+    <ClCompile Include="src\WinScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\icon.ico" />

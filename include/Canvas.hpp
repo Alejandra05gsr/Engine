@@ -21,17 +21,11 @@ namespace kai
 
 		void setPosition(float x, float y) { position = { x, y }; }
 		void setSize(float width, float height) { size = {width, height}; }
-		void setActive(bool isActive) { isActive = isActive; }
+		void setActive(bool isActive) { this->isActive = isActive; }
 		void show() { isActive = true; }
 		void hide() { isActive = false; }
 		void toggle() { isActive = !isActive;}
-		//bool isActive() = return true;
-
 	};
-
-	//inline Canvas::Canvas() : position{0,0};
-	//inline Canvas::~Canvas() : position{0,0};
-
 
 }
 #endif // !KAI_GUI_HPP

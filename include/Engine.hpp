@@ -3,6 +3,9 @@
 #include "Circle.hpp"
 #include "Play.hpp"
 #include "Menu.hpp"
+#include "WinScene.h"
+#include "GameOverScene.h"
+#include "Instructions.h"
 #include "scene_manager.hpp"
 
 namespace kai{
@@ -10,9 +13,6 @@ namespace kai{
 	public:
 		Engine() = default;
 		~Engine() = default;
-
-		//Play play;
-		//Menu menu;
 
 		void Init(); //Inicializa
 		void Run(); //Update y draw
@@ -24,8 +24,6 @@ namespace kai{
 
 		int screenWidth = 800;
 		int screenHeight = 600;
-
-
 	};
 
 }
