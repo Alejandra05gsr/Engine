@@ -9,7 +9,7 @@ namespace kai
 	void Engine::Init()
 	{
 		SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-		InitWindow(screenWidth, screenHeight, "Hello Raylib");
+		InitWindow(screenWidth, screenHeight, "Bubble Reef");
 		InitAudioDevice();
 
 

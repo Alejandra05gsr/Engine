@@ -26,7 +26,7 @@ namespace kai {
 		void drawGUI() override
 		{
 			//Objetivo
-			DrawTextEx(font, "Clean 20 garbage", { 50, 50 }, 30, 0, WHITE);
+			DrawTextEx(font, "Clean the garbage", { 50, 50 }, 30, 0, WHITE);
 
 			//Vidas
 			if (gameManager != nullptr)

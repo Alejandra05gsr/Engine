@@ -13,7 +13,7 @@
 #include "HUDCanvas.hpp"
 
 #define MAX_BULLETS 30
-#define MAX_ENEMIES 40
+#define MAX_ENEMIES 50
 #define MAX_POWERUPS 5
 #define MAX_LIVES 3
 #define MAX_COINS 7
@@ -53,7 +53,7 @@ namespace kai {
 	
 
 		float spawnTimer = 0.0f;
-		const float SPAWN_INTERVAL = 1.5f;
+		const float SPAWN_INTERVAL = 1.0f;
 
 
 		bool isPowerUpActive = false;      

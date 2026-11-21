@@ -7,10 +7,10 @@
 class GameManager : public EventListener
 {
 public:
-	int max_kills = 20;
+	int max_kills = 50;
 	int current_kills = 0;
-	int max_player_lives = 5;
-	int player_lives = 5;
+	int max_player_lives = 3;
+	int player_lives = 3;
 
 	static inline int last_final_score = 0;
 

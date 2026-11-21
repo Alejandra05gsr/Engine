@@ -41,7 +41,7 @@ namespace kai
 
 	void Menu::Draw()
 	{
-		DrawTextEx(font, "Clean the Ocean", { 80, 60 }, 55, 0, WHITE);
+		DrawTextEx(font, "Bubble Reef", { 145, 80 }, 55, 0, WHITE);
 		menuGUI.draw();
 	}
 
